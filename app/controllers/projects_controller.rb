@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_filter :check_for_sign_up
   before_filter :authorize_admin!, :except => [:index, :show]
   before_filter :authenticate_user!, :only => [:index, :show]
   before_filter :find_project, :only => [:show, :edit, :update, :destroy]
@@ -54,5 +55,11 @@ private
     rescue ActiveRecord::RecordNotFound
     flash[:alert] = "The project you were looking" + " for could not be found."
     redirect_to projects_path
+  end
+
+  def check_for_sign_up
+    if request.referer == user_registration_url
+      redirect_to confirm_user_path
+    end
   end
 end
