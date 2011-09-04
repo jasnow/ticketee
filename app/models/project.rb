@@ -8,4 +8,8 @@ class Project < ActiveRecord::Base
   }
  
   has_many :tickets
+
+  def self.for(user)
+    user.admin? ? Project : Project.readable_by(user)
+  end
 end
