@@ -11,6 +11,13 @@ class FilesController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def new
+    asset = Asset.new
+
+    render :partial => "files/form",
+      :locals => { :asset => asset }
+  end
 end
  
 
