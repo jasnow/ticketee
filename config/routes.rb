@@ -25,6 +25,10 @@ Ticketee::Application.routes.draw do
     resources :tickets
   end
 
+  resources :tickets do
+    resources :comments
+  end
+
   # Sample resource route with options:
   #   resources :products do
   #     member do

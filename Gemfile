@@ -45,5 +45,6 @@ group :test do
   gem 'cancan'
   gem 'paperclip'
   gem 'email_spec'
+  gem 'launchy'
 end
  
