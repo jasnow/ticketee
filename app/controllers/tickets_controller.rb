@@ -4,11 +4,11 @@ class TicketsController < ApplicationController
   before_filter :find_ticket, :only => [:show, :edit, :update, :destroy]
   before_filter :authorize_create!, :only => [:new, :create]
   before_filter :authorize_update!, :only => [:edit, :update]
-  before_filter :authorize_delete!, :only => :destroy
+  before_filter :authorize_delete!, :only => [:destroy]
  
   def new
     @ticket = @project.tickets.build
-    3.times { @ticket.assets.build }
+    @ticket.assets.build
   end
 
   def create

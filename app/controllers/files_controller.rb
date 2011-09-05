@@ -13,10 +13,11 @@ class FilesController < ApplicationController
   end
 
   def new
-    asset = Asset.new
-
-    render :partial => "files/form",
-      :locals => { :asset => asset }
+    @ticket = Ticket.new
+    asset = @ticket.assets.build
+    render :partial => "files/form", 
+           :locals => { :number => params[:number].to_i,
+                        :asset => asset }
   end
 end
  
