@@ -30,7 +30,11 @@ Ticketee::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :states
+    resources :states do
+      member do
+        get :make_default
+      end
+    end
   end
 
   # Sample resource route with options:
